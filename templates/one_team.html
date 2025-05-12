@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ team.title }}</h1><br>
+<p>Главный спонсор: {{ team.sponsor }}</p>
+<p>{{ team.description }}</p>
+<div><a href="/teams" class="btn btn-warning">Команды</a></div>
+{% endblock %}

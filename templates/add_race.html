@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Добавление гонки </h1>
+<form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.title.label }}<br>
+        {{ form.title(class="form-control") }}<br>
+        {% for error in form.title.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.race_date.label }}<br>
+        {{ form.race_date(class="form-control") }}<br>
+        {% for error in form.race_date.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.description.label }}<br>
+        {{ form.description(class="form-control") }}<br>
+        {% for error in form.description.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    </p>
+    <div class="mt-4">
+    {{ form.image1.label }}
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            {{ form.image1(class="form-control") }}
+            {% if form.image1.errors %}
+            <div class="text-danger">
+                {% for error in form.image1.errors %}
+                {{ error }}
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="mt-4">
+    {{ form.image2.label }}
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            {{ form.image2(class="form-control") }}
+            {% if form.image2.errors %}
+            <div class="text-danger">
+                {% for error in form.image2.errors %}
+                {{ error }}
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+    {{message}}
+</form>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="admin-buttons">
+    {% if current_user.is_authenticated and current_user.is_admin %}
+    <a href="/add_race" class="btn btn-warning">
+        Добавить гонку
+    </a>
+    <a href="/add_pilot" class='btn btn-warning'>
+        Добавить пилота
+    </a>
+    <a href="/add_team" class="btn btn-warning">
+        Добавить команду
+    </a>
+    {% endif %}
+</div>
+<h1>Гонки</h1><br>
+{% for item in races%}
+<h2>№ {{item.id}}</h2>
+<table class="table">
+    <tr>
+        <td>Название этапа</td>
+        <td>Дата гонки</td>
+    </tr>
+    <tr>
+        <td><a href="/race/{{ item.id }}">{{item.title}}</a></td>
+        <td>{{ item.race_date }}</td>
+    </tr>
+</table>
+{% endfor %}
+{% if current_user.is_authenticated and current_user.is_admin %}
+<a href="/delete_user" class="btn btn-warning">
+    Удалить пользователя
+</a><br>
+{% endif %}
+{% endblock %}

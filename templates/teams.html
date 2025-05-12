@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Команды</h1><br>
+{% for item in teams%}
+<h2>№ {{item.id}}</h2>
+<table class="table">
+    <tr>
+        <td>Название</td>
+        <td>Спонсор</td>
+    </tr>
+    <tr>
+        <td><a href="/teams/{{ item.id }}">{{item.title}}</a></td>
+        <td>{{ item.sponsor }}</td>
+    </tr>
+</table>
+{% endfor %}
+{% endblock %}

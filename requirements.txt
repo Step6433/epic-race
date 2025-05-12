@@ -1,0 +1,6 @@
+SQLAlchemy
+Flask-Login
+Werkzeug
+Flask
+WTForms
+requests

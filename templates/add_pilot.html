@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Добавление пилота</h1>
+<form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.name.label }}<br>
+        {{ form.name(class="form-control") }}<br>
+        {% for error in form.name.errors %}
+    <p class="alert alert-danger" role="alert">
+        {{ error }}
+    </p>
+    {% endfor %}
+    </p>
+    <div class="mt-4">
+        {{ form.photo.label }}
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            {{ form.photo(class="form-control") }}
+            {% if form.photo.errors %}
+            <div class="text-danger">
+                {% for error in form.photo.errors %}
+                {{ error }}
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="mt-4">
+        {{ form.team_id.label }}
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            {{ form.team_id(class="form-control") }}
+            {% if form.team_id.errors %}
+            <div class="text-danger">
+                {% for error in form.team_id.errors %}
+                {{ error }}
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+    {{message}}
+</form>
+{% endblock %}

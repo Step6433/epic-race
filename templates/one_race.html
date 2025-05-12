@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a href="/index" class="return"><-- Назад</a>
+<div class="race-info">
+    <h1>{{ race.title }}</h1><br>
+    <p>{{ race.race_date }}</p>
+    <p>{{ race.description }}</p>
+    <div class="images-block">
+        <img src="{{ image1 }}" alt="Фото 1" style="max-width: 300px;"/>
+        <img src="{{ image2 }}" alt="Фото 2" style="max-width: 300px;"/>
+    </div>
+</div>
+<div class="admin-buttons">
+    {% if current_user.is_authenticated and current_user.is_admin %}
+    <a href="/add_results/{{ race.id }}" class="btn btn-warning">Добавить результаты</a>
+    <a href="/edit_race/{{ race.id }}" class="btn btn-warning">Изменить гонку</a>
+    <a href="/del_race/{{ race.id }}" class="btn btn-warning">Удалить гонку</a>
+    {% endif %}
+</div>
+{% endblock %}
